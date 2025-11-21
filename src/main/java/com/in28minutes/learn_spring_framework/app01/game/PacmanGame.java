@@ -1,4 +1,4 @@
-package com.in28minutes.learn_spring_framework.game;
+package com.in28minutes.learn_spring_framework.app01.game;
 
 public class PacmanGame implements GamingConsole {
     public void up() {

@@ -1,4 +1,4 @@
-package com.in28minutes.learn_spring_framework;
+package com.in28minutes.learn_spring_framework.simpleExamples.helloWorld;
 
 public class Address {
     private String city;
