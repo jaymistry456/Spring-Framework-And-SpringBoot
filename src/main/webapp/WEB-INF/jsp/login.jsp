@@ -1,19 +1,9 @@
-<html>
-    <head>
-        <title>My First JSP Page</title>
-    </head>
-    <body>
-        Welcome to Login Page!
-        <form method="post">
-            <div>
-                <input type="text" name="name">
-            </div>
-            <div>
-                <input type="password" name="password">
-            </div>
-            <div>
-                <input type="submit">
-            </div>
-        </form>
-    </body>
-</html>
+<div class="container">
+    <h1>Login</h1>
+    <pre>${errorMessage}</pre>
+    <form method="post">
+        Name: <input type="text" name="name">
+        Password: <input type="password" name="password">
+        <input type="submit">
+    </form>
+</div>
