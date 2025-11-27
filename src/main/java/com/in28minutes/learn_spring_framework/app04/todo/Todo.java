@@ -1,10 +1,13 @@
 package com.in28minutes.learn_spring_framework.app04.todo;
 
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 public class Todo {
     private int id;
     private String username;
+    @Size(min = 10, message = "The description has to be at least 10 characters.")
     private String description;
     private LocalDate targetDate;
     private boolean done;

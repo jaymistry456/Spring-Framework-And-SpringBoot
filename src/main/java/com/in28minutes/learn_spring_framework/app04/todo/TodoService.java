@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.function.Predicate;
 
 @Service
 public class TodoService {
@@ -13,9 +13,9 @@ public class TodoService {
     private static int todosCount = 0;
 
     static {
-        todos.add(new Todo(++todosCount, "in28minutes", "Learn AWS", LocalDate.now().plusYears(1), false));
-        todos.add(new Todo(++todosCount, "Telusko", "Learn Java", LocalDate.now().plusYears(1), false));
-        todos.add(new Todo(++todosCount, "Maximillian", "Learn Angular", LocalDate.now().plusYears(1), false));
+        todos.add(new Todo(++todosCount, "in28minutes", "Learn Amazon Web Services", LocalDate.now().plusYears(1), false));
+        todos.add(new Todo(++todosCount, "Telusko", "Learn Java and Springboot", LocalDate.now().plusYears(1), false));
+        todos.add(new Todo(++todosCount, "Maximillian", "Learn AngularJS", LocalDate.now().plusYears(1), false));
     }
 
     public List<Todo> findTodosByUsername(String username) {
@@ -26,5 +26,20 @@ public class TodoService {
 
     public void addNewTodo(String username, String description, LocalDate targetDate, boolean done) {
         todos.add(new Todo(++todosCount, username, description, targetDate, done));
+    }
+
+    public Todo findTodoById(int id) {
+        Predicate<? super Todo> predicate = todo -> todo.getId() == id;
+        return todos.stream().filter(predicate).findFirst().get();
+    }
+
+    public void deleteTodo(int id) {
+        Predicate<? super Todo> predicate = todo -> todo.getId() == id;
+        todos.removeIf(predicate);
+    }
+
+    public void updateTodo(Todo todo) {
+        deleteTodo(todo.getId());
+        todos.add(todo);
     }
 }
