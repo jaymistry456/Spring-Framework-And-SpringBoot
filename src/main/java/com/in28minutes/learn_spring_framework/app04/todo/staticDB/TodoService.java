@@ -1,4 +1,4 @@
-package com.in28minutes.learn_spring_framework.app04.todo;
+package com.in28minutes.learn_spring_framework.app04.todo.staticDB;
 
 import org.springframework.stereotype.Service;
 
@@ -19,9 +19,8 @@ public class TodoService {
     }
 
     public List<Todo> findTodosByUsername(String username) {
-        return todos.stream()
-                .filter(todo -> todo.getUsername().equalsIgnoreCase(username))
-                .toList();
+        Predicate<? super Todo> predicate = todo -> todo.getUsername().equalsIgnoreCase(username);
+        return todos.stream().filter(predicate).toList();
     }
 
     public void addNewTodo(String username, String description, LocalDate targetDate, boolean done) {
